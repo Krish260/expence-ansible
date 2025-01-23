@@ -31,7 +31,7 @@
       msg: "mysql_info {{ mysql_info }}"
   
   - name: setup root password
-    ansible.builtin.command: mysql -h 172.31.18.159 -u root -pass "{{ mysql_root_password }}"
+    ansible.builtin.command: "mysql -h 172.31.18.159 -u root -pass {{ mysql_root_password }}"
     when: mysql_info.failed is true
 
 
