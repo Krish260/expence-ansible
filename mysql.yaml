@@ -29,7 +29,7 @@
       msg: "mysql_info {{ mysql_info }}"
   
   - name: setup root password
-    ansible.builtin.command: mysql -h <host-address> -u root -p<password>
+    ansible.builtin.command: mysql -h 172.31.18.159 -u root -p<password>
     when: mysql_info.failed is true
 
 
