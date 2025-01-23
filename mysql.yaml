@@ -1,9 +1,9 @@
 - name: configure mysql server
   hosts: web
   become: yes
-  tasks:
   vars:
     mysql_root_password: ExpenseApp@1
+  tasks:
   - name: install packages
     ansible.builtin.pip:
       name: PYMYSQL
