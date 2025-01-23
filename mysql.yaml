@@ -2,6 +2,8 @@
   hosts: web
   become: yes
   tasks:
+  vars:
+    mysql_root_password: ExpenseApp@1
   - name: install packages
     ansible.builtin.pip:
       name: PYMYSQL
@@ -19,7 +21,7 @@
   - name: connect to mysql server
     community.mysql.mysql_info:
       login_user: root
-      login_password: ExpenseApp@1
+      login_password: "{{ mysql_root_password }}"
       login_host: 172.31.18.159
     register: mysql_info
     ignore_errors: true
@@ -29,7 +31,7 @@
       msg: "mysql_info {{ mysql_info }}"
   
   - name: setup root password
-    ansible.builtin.command: mysql -h 172.31.18.159 -u root -p<password>
+    ansible.builtin.command: mysql -h 172.31.18.159 -u root -pass "{{ mysql_root_password }}"
     when: mysql_info.failed is true
 
 
