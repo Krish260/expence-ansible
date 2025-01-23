@@ -1,6 +1,6 @@
 - name: configure mysql server
-  hosts: web
-  become: yes
+  hosts: local
+  connection: local
   tasks:
   - name: INSTALL MYSQL server
     ansible.builtin.package:
