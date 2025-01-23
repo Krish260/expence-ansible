@@ -4,7 +4,7 @@
   tasks:
   - name: INSTALL MYSQL server
     ansible.builtin.package:
-      name: "{{ item }}""
+      name: "{{ item }}"
       state: installed
     loop:
     - PyMySQL
