@@ -7,39 +7,39 @@
       name: nginx
       state: installed
   
-  # - name: enable and start nginx
-  #   ansible.builtin.service:
-  #     name: nginx
-  #     state: started
-  #     enabled: yes
+  - name: enable and start nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: yes
 
-  # - name: disable html directory
-  #   ansible.builtin.file:
-  #     path: /usr/share/nginx/html
-  #     state: absent
+  - name: disable html directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: absent
     
-  # - name: copy the code
-  #   ansible.builtin.copy:
-  #     path: /usr/share/nginx/html
-  #     state: directory
+  - name: copy the code
+    ansible.builtin.copy:
+      path: /usr/share/nginx/html
+      state: directory
   
-  # - name: download frontend code
-  #   ansible.builtin.get_url:
-  #     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-  #     dest: /tmp/frontend.zip
+  - name: download frontend code
+    ansible.builtin.get_url:
+      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+      dest: /tmp/frontend.zip
   
-  # - name: unzip the folder
-  #   ansible.builtin.unarchive:
-  #     src: /tmp/frontend.zip
-  #     dest: /usr/share/nginx/html
-  #     remote_src: yes
+  - name: unzip the folder
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
     
-  # - name: copy expence config
-  #   ansible.builtin.copy:
-  #     src: expense.conf
-  #     dest: /etc/nginx/default.d/expense.conf
+  - name: copy expence config
+    ansible.builtin.copy:
+      src: expense.conf
+      dest: /etc/nginx/default.d/expense.conf
   
-  # - name: restart nginx
-  #   ansible.builtin.service:
-  #     state: restarted
-  #     name: nginx
+  - name: restart nginx
+    ansible.builtin.service:
+      state: restarted
+      name: nginx
