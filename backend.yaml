@@ -50,8 +50,8 @@
     name: {{ item }}
     executable: pip3.9
   loop:
-    - cryptography
-    - PYMYSQL
+  - cryptography
+  - pymysql
 
 - name: import mysql data
   community.mysql.mysql_db:
@@ -59,11 +59,12 @@
     name: all
     login_user: root
     login_password: ExpenseApp@1
+    login_host: local
     target: /app/schema/backend.sql
 
-- name: deamon reload and restart service
-        ansible.builtin.systemd_service:
-          enabled: true
-          state: restarted
-          deamon_reload: true
-          name: backend
+# - name: deamon reload and restart service
+#         ansible.builtin.systemd_service:
+#           enabled: true
+#           state: restarted
+#           deamon_reload: true
+#           name: backend
